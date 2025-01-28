@@ -13,16 +13,21 @@ const Characters = () => {
         const response = await fetch('/api/characterInfo');
         const data = await response.json();
         // console.log('data!', data);
+        if (!response.ok) {
+          setCharacters()
+          throw new Error('Failed to connect to DB')
+        }
         setCharacters(data);
       } catch (error) {
-        console.log('problem getting data', error);
+        console.error('Problem getting character data', error);
       }
     }
     getData();
   }, []); 
 
   if (!charList) return <div>Sorry, no characters found</div>;
-  // console.log("charList is as follows:", charList)
+  if (!charList[0]) return <div>Loading characters, please wait~</div>
+  console.log("charList is as follows:", charList)
   const charElems = charList.map((char, i) => {
     return <CharacterCard key={i} char={char} />;
   });

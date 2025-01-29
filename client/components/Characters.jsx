@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 
 import CharacterCard from './CharacterCard.jsx';
-
+let sample = ""
 const Characters = () => {
 
   const [charList, setCharacters] = useState([]);
@@ -24,7 +24,7 @@ const Characters = () => {
     }
     getData();
   }, []); 
-
+  // return <div>"Test"</div>
   if (!charList) return <div>Sorry, no characters found</div>;
   if (!charList[0]) return <div>Loading characters, please wait~</div>
   console.log("charList is as follows:", charList)
@@ -32,7 +32,7 @@ const Characters = () => {
     return <CharacterCard key={i} char={char} />;
   });
 
-  return <div>{charElems}</div>;
+  return <div><div>{sample}</div>{charElems}</div>;
 };
 
 export default Characters;

@@ -22,7 +22,7 @@ app.use((req, res) =>
 );
 
 
-// Investigate this to be sure it's working properly!
+
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
